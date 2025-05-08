@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quote of the Day Generator</title>
+
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="loading-screen" class="screen" style="display: none">
+      <div class="loading-container cal-sans-regular">
+        <div>Loading</div>
+        <img
+          src="/images/loading.svg"
+          height="100"
+          width="100"
+          style="margin-top: 1.5rem"
+        />
+      </div>
+    </div>
+    <div id="main-screen" class="screen">
+      <div>
+        <div class="result-container">
+          <div
+            class="cal-sans-regular"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+          >
+            "<%= quote %>"
+          </div>
+          <div
+            class="jost-300 author-div"
+            class="cal-sans-regular"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+            data-aos-delay="500"
+          >
+            - <%= author %>
+          </div>
+          <div
+            class="form-buttons-container"
+            style="justify-content: center; align-items: center"
+          >
+            <form action="/form" method="POST">
+              <input hidden type="text" name="name" value="<%= name %>" />
+              <input hidden type="text" name="feeling" value="<%= feeling %>" />
+              <button
+                type="submit"
+                id="regenerate"
+                class="cal-sans-regular"
+                style="
+                  text-decoration: underline;
+                  background-color: transparent;
+                  border: none;
+                  font-size: 1.5rem;
+                "
+              >
+                Re-generate
+              </button>
+              <button
+                class="cal-sans-regular"
+                style="
+                  text-decoration: underline;
+                  background-color: transparent;
+                  border: none;
+                  font-size: 1.5rem;
+                "
+              >
+                <a href="/" style="color: #0065ff" class="cal-sans-regular"
+                  >Go Home</a
+                >
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("regenerate").addEventListener("click", (e) => {
+          document.getElementById("main-screen").style.display = "none";
+          document.getElementById("loading-screen").style.display = "flex";
+        });
+      });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+      });
+    </script>
+  </body>
+</html>

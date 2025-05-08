@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen > div {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  position: relative;
+}
+
+.splash-heading-container {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+  height: fit-content;
+  width: fit-content;
+  margin-top: 1.2rem;
+}
+
+.splash-heading-container > div {
+  color: gray;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.splash-image-container {
+  height: 100vh;
+  width: 250px;
+  background-color: #0065ff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.splash-image-container > div {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  color: #4791ff;
+}
+
+.splash-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 3rem;
+  gap: 1rem;
+}
+
+.splash-buttons-container > a {
+  width: auto;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#greeting {
+  margin-top: 2rem;
+  font-size: 4rem;
+}
+
+.form-header {
+  font-size: 2.5rem;
+  color: gray;
+  margin-top: 1rem;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-bottom: solid 3px gray;
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  color: black;
+}
+
+#chips-container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.chip {
+  border: solid 1px black;
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #0065ff;
+  border: solid #0065ff 1px;
+  color: white;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.form-buttons-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.form-buttons-container > button {
+  width: auto;
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 2rem;
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+  position: relative;
+}
+
+.author-div {
+  font-size: 2rem;
+  color: gray;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #0065ff;
+  font-weight: 600;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f0f8ff;
+}
+
+td {
+  vertical-align: top;
+}
+
+.quote-history-header {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.cal-sans-regular {
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jost-600 {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.jost-300 {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.jost-400 {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quote of the Day Generator</title>
+
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="loading-screen" class="screen" style="display: none">
+      <div class="loading-container cal-sans-regular">
+        <div>Loading</div>
+        <img
+          src="/images/loading.svg"
+          height="100"
+          width="100"
+          style="margin-top: 1.5rem"
+        />
+      </div>
+    </div>
+    <div id="main-screen" class="screen">
+      <div>
+        <form action="" method="POST">
+          <div
+            id="greeting"
+            class="cal-sans-regular"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+          ></div>
+          <div
+            class="jost-600 form-header"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-delay="500"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+          >
+            My name is...
+          </div>
+          <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="cal-sans-regular"
+              autofocus
+              data-aos="fade-up"
+              data-aos-offset="200"
+              data-aos-delay="500"
+              data-aos-easing="ease-in-sine"
+              data-aos-duration="600"
+            />
+            <input type="hidden" name="feeling" id="hidden-feeling" />
+          </div>
+          <div
+            class="jost-600 form-header"
+            style="margin-top: 2rem"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-delay="1000"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+          >
+            and today I'm feeling...
+          </div>
+          <div
+            id="chips-container"
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-delay="1000"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+          ></div>
+          <div class="form-buttons-container">
+            <button
+              style="
+                color: black;
+                background-color: transparent;
+                border: 1px black solid;
+              "
+              disabled
+            >
+              <a
+                href="/"
+                style="text-decoration: none; color: black"
+                class="cal-sans-regular"
+                >Back</a
+              ></button
+            ><button
+              style="
+                color: white;
+                background-color: #0065ff;
+                border: #0065ff 1px solid;
+              "
+              class="cal-sans-regular"
+              id="generate"
+            >
+              Generate!
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const now = new Date();
+        const hour = now.getHours();
+
+        let timeOfDay;
+        if (hour < 12) {
+          timeOfDay = "morning";
+        } else if (hour < 17) {
+          timeOfDay = "afternoon";
+        } else {
+          timeOfDay = "evening";
+        }
+
+        document.getElementById("greeting").innerHTML = `Good ${timeOfDay},`;
+
+        const feelings = {
+          Anxious: "Anxiety",
+          Confident: "Confident",
+          Courageous: "Courage",
+          Excellent: "Excellence",
+          Fearful: "Fear",
+          Free: "Freedom",
+          Happy: "Happiness",
+          Inspired: "Inspiration",
+          Kind: "Kindness",
+          Love: "Love",
+          Pain: "Pain",
+          Successful: "Success",
+        };
+
+        const chipsContainer = document.getElementById("chips-container");
+
+        chipsContainer.innerHTML = Object.keys(feelings)
+          .map(
+            (f) =>
+              `<div class="chip cal-sans-regular" data-feeling="${f}">${f}</div>`
+          )
+          .join("");
+
+        let selectedFeeling = "";
+
+        chipsContainer.addEventListener("click", (e) => {
+          const chip = e.target.closest(".chip");
+          if (!chip) return;
+          document.querySelectorAll(".chip").forEach((el) => {
+            el.classList.remove("selected");
+          });
+          chip.classList.add("selected");
+          selectedFeeling = chip.dataset.feeling;
+          document.getElementById("hidden-feeling").value = selectedFeeling;
+        });
+
+        document.getElementById("generate").addEventListener("click", (e) => {
+          const name = document.getElementById("name").value.trim();
+          if (name.length == 0 || selectedFeeling.length == 0) {
+            e.preventDefault();
+            alert("Please enter your name and select a feeling.");
+          } else {
+            document.getElementById("main-screen").style.display = "none";
+            document.getElementById("loading-screen").style.display = "flex";
+            return;
+          }
+        });
+      });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+      });
+    </script>
+  </body>
+</html>
